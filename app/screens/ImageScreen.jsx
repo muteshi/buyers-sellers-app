@@ -1,5 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
+import AppButton from "../components/common/AppButton";
+import AppText from "../components/common/AppText";
 
 import colors from "../config/colors";
 
@@ -8,6 +10,8 @@ function ImageScreen(props) {
     <View style={styles.container}>
       <View style={styles.closeIcon}></View>
       <View style={styles.deleteIcon}></View>
+      <AppText>Testing again!</AppText>
+      <AppButton title="Login" onPress={() => console.log("tapped")} />
       <Image
         resizeMode="contain"
         style={styles.image}
