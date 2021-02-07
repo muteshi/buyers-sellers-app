@@ -13,9 +13,7 @@ export default function WelcomeScreen() {
     >
       <View style={styles.logoView}>
         <Image source={require("../assets/logo.png")} />
-        <AppText customStyles={{ fontWeight: "bold", fontSize: 22 }}>
-          Where Buyers Meet Sellers
-        </AppText>
+        <AppText style={styles.tagline}>Where Buyers Meet Sellers</AppText>
       </View>
       <View style={styles.btnContainer}>
         <AppButton title="Login" />
@@ -41,5 +39,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     top: 80,
+  },
+  tagline: {
+    fontWeight: "bold",
+    fontSize: 22,
   },
 });

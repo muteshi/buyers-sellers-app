@@ -1,17 +1,18 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-import AppButton from "../components/common/AppButton";
-import AppText from "../components/common/AppText";
+import { FontAwesome } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 
 function ImageScreen(props) {
   return (
     <View style={styles.container}>
-      <View style={styles.closeIcon}></View>
-      <View style={styles.deleteIcon}></View>
-      <AppText>Testing again!</AppText>
-      <AppButton title="Login" onPress={() => console.log("tapped")} />
+      <View style={styles.closeIcon}>
+        <FontAwesome name="close" color="white" size={40} />
+      </View>
+      <View style={styles.deleteIcon}>
+        <FontAwesome name="trash" color="white" size={40} />
+      </View>
       <Image
         resizeMode="contain"
         style={styles.image}
@@ -28,17 +29,11 @@ const styles = StyleSheet.create({
   },
   closeIcon: {
     position: "absolute",
-    width: 50,
-    height: 50,
-    backgroundColor: colors.secondary,
     top: 40,
     left: 30,
   },
   deleteIcon: {
     position: "absolute",
-    width: 50,
-    height: 50,
-    backgroundColor: colors.primary,
     top: 40,
     right: 30,
   },

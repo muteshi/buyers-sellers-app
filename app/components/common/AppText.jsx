@@ -2,8 +2,8 @@ import React from "react";
 import { Text, StyleSheet, Platform } from "react-native";
 import colors from "../../config/colors";
 
-function AppText({ children, customStyles }) {
-  return <Text style={[styles.text, customStyles]}>{children}</Text>;
+function AppText({ children, style }) {
+  return <Text style={[styles.text, style]}>{children}</Text>;
 }
 const deviceSpecificStyles = Platform.select({
   ios: {
@@ -17,7 +17,7 @@ const deviceSpecificStyles = Platform.select({
 });
 const styles = StyleSheet.create({
   text: {
-    color: colors.white,
+    color: colors.dark,
     ...deviceSpecificStyles,
   },
 });
