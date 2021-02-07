@@ -5,5 +5,5 @@ import ImageScreen from "./app/screens/ImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
-  return <ImageScreen />;
+  return <WelcomeScreen />;
 }
