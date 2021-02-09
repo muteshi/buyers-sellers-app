@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import AppPicker from "./app/components/common/AppPicker";
+import AppTextInput from "./app/components/common/AppTextInput";
 import Icon from "./app/components/common/Icon";
 import ListItem from "./app/components/common/ListingItem";
 import Screen from "./app/components/common/Screen";
@@ -12,5 +14,9 @@ import MessagesScreen from "./app/screens/MessagesScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
-  return <ListingScreen />;
+  return (
+    <Screen>
+      <AppPicker placeholder="Category" icon="bars" />
+    </Screen>
+  );
 }
