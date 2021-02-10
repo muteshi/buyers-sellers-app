@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, Image } from "react-native";
-import { Formik } from "formik";
 import * as Yup from "yup";
 
-import AppButton from "../components/common/AppButton";
-import AppPasswordInput from "../components/common/AppPasswordInput";
-import AppTextInput from "../components/common/AppTextInput";
 import Screen from "../components/common/Screen";
-import AppText from "../components/common/AppText";
+import {
+  AppForm as Form,
+  AppFormField as Field,
+  SubmitButton as Button,
+} from "../components/forms";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email Address"),
@@ -20,39 +20,33 @@ function LoginScreen(props) {
   return (
     <Screen style={styles.container}>
       <Image source={require("../assets/logo.png")} style={styles.logo} />
-      <Formik
+      <Form
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleSubmit, errors }) => (
-          <>
-            <AppTextInput
-              autoCapitalize="none"
-              autoCorrect={false}
-              onChangeText={handleChange("email")}
-              icon="envelope-o"
-              keyboardType="email-address"
-              placeholder="Email address"
-              textContentType="emailAddress"
-            />
-            <AppText style={{ color: "red" }}>{errors.email}</AppText>
-            <AppPasswordInput
-              onPress={() => setShowPassword(!showPassword)}
-              showPassword={showPassword}
-              autoCapitalize="none"
-              autoCorrect={false}
-              onChangeText={handleChange("password")}
-              icon="lock"
-              placeholder="Password"
-              secureTextEntry={!showPassword}
-              textContentType="password"
-            />
-            <AppText style={{ color: "red" }}>{errors.password}</AppText>
-            <AppButton title="Login" onPress={handleSubmit} disabled={errors} />
-          </>
-        )}
-      </Formik>
+        <Field
+          fieldName="email"
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon="envelope-o"
+          keyboardType="email-address"
+          placeholder="Email address"
+          textContentType="emailAddress"
+        />
+        <Field
+          autoCapitalize="none"
+          autoCorrect={false}
+          onPress={() => setShowPassword(!showPassword)}
+          showPassword={showPassword}
+          icon="lock"
+          fieldName="password"
+          placeholder="Password"
+          secureTextEntry={!showPassword}
+          textContentType="password"
+        />
+        <Button buttonName="Login" />
+      </Form>
     </Screen>
   );
 }
