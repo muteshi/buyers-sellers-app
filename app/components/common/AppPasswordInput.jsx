@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import colors from "../../config/colors";
 import defaultStyles from "../../config/styles";
 
-function AppTextInput({ icon, ...otherProps }) {
+function AppPasswordInput({ icon, showPassword, onPress, ...otherProps }) {
   return (
     <View style={styles.container}>
       {icon && (
@@ -15,7 +15,14 @@ function AppTextInput({ icon, ...otherProps }) {
           style={styles.icon}
         />
       )}
-      <TextInput style={defaultStyles.text} {...otherProps} />
+      <TextInput style={[defaultStyles.text, styles.text]} {...otherProps} />
+      <FontAwesome
+        onPress={onPress}
+        name={showPassword ? "eye" : "eye-slash"}
+        size={20}
+        color={colors.primary}
+        style={styles.icon}
+      />
     </View>
   );
 }
@@ -35,6 +42,9 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
+  text: {
+    flex: 1,
+  },
 });
 
-export default AppTextInput;
+export default AppPasswordInput;

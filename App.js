@@ -10,13 +10,10 @@ import AccountScreen from "./app/screens/AccountScreen";
 import ImageScreen from "./app/screens/ImageScreen";
 import ListingDetailsScreen from "./app/screens/ListDetailsScreen";
 import ListingScreen from "./app/screens/ListingScreen";
+import LoginScreen from "./app/screens/LoginScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
-  return (
-    <Screen>
-      <AppPicker placeholder="Category" icon="bars" />
-    </Screen>
-  );
+  return <LoginScreen />;
 }
