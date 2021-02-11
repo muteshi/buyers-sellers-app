@@ -7,6 +7,7 @@ function Icon({
   size = 40,
   backgroundColor = "#111",
   iconColor = "#fff",
+  onPress,
 }) {
   return (
     <View
@@ -19,7 +20,12 @@ function Icon({
         alignItems: "center",
       }}
     >
-      <FontAwesome name={name} size={size * 0.5} color={iconColor} />
+      <FontAwesome
+        name={name}
+        size={size * 0.5}
+        color={iconColor}
+        onPress={onPress}
+      />
     </View>
   );
 }

@@ -12,13 +12,22 @@ import colors from "../../config/colors";
 import AppText from "./AppText";
 import PickerItem from "./PickerItem";
 
-function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
+function AppPicker({
+  icon,
+  items,
+  numberOfColumns,
+  onSelectItem,
+  PickerItemComponent = PickerItem,
+  placeholder,
+  selectedItem,
+  width = "100%",
+}) {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setVisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <FontAwesome
               name={icon}
@@ -42,8 +51,10 @@ function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
         <FlatList
           data={items}
           keyExtractor={(item) => item.value.toString()}
+          numColumns={numberOfColumns}
           renderItem={({ item }) => (
-            <PickerItem
+            <PickerItemComponent
+              item={item}
               label={item.label}
               onPress={() => {
                 setVisible(false);
@@ -64,7 +75,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lighter,
     borderRadius: 15,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
     alignItems: "center",

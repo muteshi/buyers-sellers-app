@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import AppText from "../components/common/AppText";
+import CategoryPickerItem from "../components/common/CategoryPickerItem";
 import Screen from "../components/common/Screen";
 
 import {
@@ -21,7 +22,7 @@ const validationSchema = Yup.object().shape({
 const categories = [
   {
     backgroundColor: "#fc5c65",
-    icon: "floor-lamp",
+    icon: "bars",
     label: "Furniture",
     value: 1,
   },
@@ -39,7 +40,7 @@ const categories = [
   },
   {
     backgroundColor: "#26de81",
-    icon: "cards",
+    icon: "futbol-o",
     label: "Games",
     value: 4,
   },
@@ -49,12 +50,7 @@ const categories = [
     label: "Clothing",
     value: 5,
   },
-  {
-    backgroundColor: "#45aaf2",
-    icon: "basketball",
-    label: "Sports",
-    value: 6,
-  },
+
   {
     backgroundColor: "#4b7bec",
     icon: "headphones",
@@ -63,15 +59,9 @@ const categories = [
   },
   {
     backgroundColor: "#a55eea",
-    icon: "book-open-variant",
+    icon: "book",
     label: "Books",
     value: 8,
-  },
-  {
-    backgroundColor: "#778ca3",
-    icon: "application",
-    label: "Other",
-    value: 9,
   },
 ];
 
@@ -90,18 +80,25 @@ function ListingEditScreen(props) {
         validationSchema={validationSchema}
       >
         <Field maxLength={255} fieldName="title" placeholder="Title" />
-        <Field
-          keyboardType="numeric"
-          maxLength={8}
-          fieldName="price"
-          placeholder="Price"
-        />
-        <Picker
-          items={categories}
-          icon="bars"
-          fieldName="category"
-          placeholder="Category"
-        />
+        <View style={styles.fieldContainer}>
+          <Field
+            keyboardType="numeric"
+            maxLength={8}
+            width="48%"
+            fieldName="price"
+            placeholder="Price"
+          />
+
+          <Picker
+            items={categories}
+            numberOfColumns={3}
+            icon="bars"
+            width="48%"
+            fieldName="category"
+            placeholder="Category"
+            PickerItemComponent={CategoryPickerItem}
+          />
+        </View>
         <Field
           maxLength={255}
           multiline
@@ -117,6 +114,10 @@ function ListingEditScreen(props) {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+  },
+  fieldContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   text: {
     alignSelf: "center",

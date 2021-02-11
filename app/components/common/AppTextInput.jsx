@@ -4,9 +4,9 @@ import { FontAwesome } from "@expo/vector-icons";
 import colors from "../../config/colors";
 import defaultStyles from "../../config/styles";
 
-function AppTextInput({ icon, ...otherProps }) {
+function AppTextInput({ icon, width = "100%", ...otherProps }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width }]}>
       {icon && (
         <FontAwesome
           name={icon}
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lighter,
     borderRadius: 15,
     flexDirection: "row",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
     alignItems: "center",
